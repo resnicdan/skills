@@ -28,7 +28,12 @@ re-implement it deliberately from the design — don't paste it in by reflex.
    confirm the intended change and catch regressions.
 4. **Tests prove the parity.** Bring the coverage forward (rewritten to the new
    shape, not blindly pasted). Untested paths in the old build are the ones most
-   likely to regress silently.
+   likely to regress silently. If the old build has no tests — common for the
+   prototypes and spikes this skill welcomes — writing a characterization suite is
+   the first step of the rebuild, not an optional extra, and it counts toward the
+   cost: with nothing to diff against, there's no parity to prove. Pin down the
+   behavior *worth keeping*, not every quirk — a prototype's scaffolding and bugs
+   are things to drop, not preserve.
 5. **Retire the old code only once parity is proven** — not before. Then remove it
    cleanly so both versions don't linger.
 
@@ -36,6 +41,8 @@ re-implement it deliberately from the design — don't paste it in by reflex.
 
 Same learnings, surgical scope. Make the **smallest set of changes** that captures
 the material gain the blank-slate design revealed — nothing more. Keep the diff
-focused and behavior-preserving; the point of choosing refactor over rebuild was
-to avoid the blast radius, so don't let it sprawl into one. Prove parity the same
-way: existing tests stay green, add tests for anything the refactor newly exercises.
+focused. Preserve existing behavior except for the specific gaps you're
+deliberately closing (the hardening case), and add a test for each new behavior you
+introduce; the point of choosing refactor over rebuild was to avoid the blast
+radius, so don't let it sprawl into one. Prove parity the same way: existing tests
+stay green, add tests for anything the refactor newly exercises.
