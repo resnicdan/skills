@@ -14,6 +14,7 @@ procedure) plus any reference files it needs.
 | Skill | What it does |
 |---|---|
 | [knowing-what-you-know-now](skills/knowing-what-you-know-now) | Run it on something already built and working. It reconstructs what you learned building it, designs the version you'd write *knowing everything you know now*, and returns an educated **keep / refactor / rebuild** verdict with effort/risk/maintenance tradeoffs — earning the rebuild rather than reflexively rewriting. |
+| [second-opinion](skills/second-opinion) | Run it before you push. It has a second agent — ideally a *different model* than the one that built the code — review your branch, runs your own independent pass, then reconciles the two into one tagged findings list (**agreed / reviewer-only / mine-only**) and a **ship / review-needed / do-not-ship** verdict. A model reviewing its own work goes easy on it; an independent reviewer doesn't. |
 
 ## Install
 
@@ -53,7 +54,11 @@ The house style follows a few principles worth stating up front:
 Method credit: Matt Pocock's *"The Missing Manual: How to Write Great Skills."*
 The `knowing-what-you-know-now` skill draws on Farhan Thawar and Tobi Lütke's idea
 that *the learning is the collateral, not the code* — knowing everything you know
-now, how would you build it?
+now, how would you build it? The `second-opinion` skill's two-pass reconcile
+pattern is adapted from [`robertoecf/adversarial-review`](https://github.com/robertoecf/adversarial-review),
+and its "independence over a smarter model" rationale follows the research on LLM
+self-preference bias (a model rating its own output higher than an independent
+judge would).
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) if you'd like to add or improve a skill.
 
